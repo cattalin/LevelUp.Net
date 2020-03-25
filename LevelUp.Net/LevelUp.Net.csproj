@@ -9,4 +9,8 @@
     <PackageReference Include="Nethereum.Web3" Version="3.7.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Operations\Transactions\" />
+  </ItemGroup>
+
 </Project>

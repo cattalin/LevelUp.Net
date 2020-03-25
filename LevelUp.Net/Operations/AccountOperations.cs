@@ -9,7 +9,7 @@ namespace LevelUp.Net.Operations
     {
         public async Task GetAccountBalanceAsync(string accountAddress)
         {
-            var web3 = new Web3(BlockchainMetadata.Url);
+            var web3 = new Web3(BlockchainMetadata.URL);
 
             var balance = await web3.Eth.GetBalance.SendRequestAsync(accountAddress);
             Console.WriteLine($"Balance in Wei: {balance.Value}");

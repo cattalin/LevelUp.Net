@@ -12,6 +12,9 @@ namespace LevelUp.Net
         {
             BlockchainMetadata.Init();
 
+            //scenarios.JoinTheCause();
+
+            scenarios.GetContractTotalInfluence();
             scenarios.GetAccountBalance();
             scenarios.TransferEth();
             Console.ReadLine();

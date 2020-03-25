@@ -1,5 +1,5 @@
-﻿using LevelUp.Net.Infrastructure;
-using System.Linq;
+﻿using System.Linq;
+using static LevelUp.Net.Infrastructure.BlockchainMetadata;
 
 namespace LevelUp.Net.Operations
 {
@@ -11,14 +11,26 @@ namespace LevelUp.Net.Operations
 
         public void GetAccountBalance()
         {
-            var address = BlockchainMetadata.mainAccount.Address;
+            var address = MainAccount.Address;
             accountsOps.GetAccountBalanceAsync(address).Wait();
+        }
+
+        public void GetContractTotalInfluence()
+        {
+            var address = MainAccount.Address;
+            contractsOps.CallGetTotalInfluenceAsync().Wait();
+        }
+
+        public void JoinTheCause()
+        {
+            var account = SecondaryAccounts.First();
+            contractsOps.SendJoinTheCauseAsync(account).Wait();
         }
 
         public void TransferEth()
         {
-            var sender = BlockchainMetadata.mainAccount;
-            var receiverAddress = BlockchainMetadata.secondaryAccounts.First().Address;
+            var sender = MainAccount;
+            var receiverAddress = SecondaryAccounts.First().Address;
             var transferedValue = 1.5m;
             transactionsOps.TransferEtherAsync(sender, receiverAddress, transferedValue).Wait();
         }
